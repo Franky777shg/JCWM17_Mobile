@@ -16,20 +16,54 @@ const Item = ({ title }) => (
 );
 
 const TopicDay3 = () => {
+    // data array of string
     const DATA = [
         "mobil", "motor", "sepeda", "mobil", "motor", "sepeda", "mobil", "motor", "sepeda", "mobil", "motor", "sepeda"
+    ]
+
+    // data array of object
+    const users = [
+        {
+            nama: 'Budi',
+            id: 1,
+            kendaraan: 'mobil'
+        },
+        {
+            nama: 'Andi',
+            id: 2,
+            kendaraan: 'mobil'
+        },
+        {
+            nama: 'Citra',
+            id: 3,
+            kendaraan: 'mobil'
+        }
     ]
     return (
         <View style={{}}>
             {/* <Text style={{ fontSize: 25 }}>Flat List</Text> */}
-            <FlatList
+
+            {/* untuk merender item yang ada di variabel DATA */}
+            {/* <FlatList
                 data={DATA}
                 renderItem={({ item }) => (
                     <Item title={item} />
                 )}
                 keyExtractor={(item, index) => index}
                 ListHeaderComponent={<Text style={{ fontSize: 25 }}>Flat List</Text>}
+            /> */}
+
+            {/* untuk merender item yang ada di variabel users */}
+            <FlatList
+                data={users}
+                renderItem={({ item }) => (
+                    <View style={styles.item}>
+                        <Text style={styles.title}>{item.kendaraan}</Text>
+                        <Text style={styles.title}>{item.id}</Text>
+                    </View>
+                )}
             />
+
             {/* <Text style={{ fontSize: 25 }}>Offline Image</Text>
             <Image
                 style={{ height: 300, width: 300, backgroundColor: 'salmon' }}
