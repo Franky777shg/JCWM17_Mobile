@@ -21,13 +21,14 @@ const TopicDay3 = () => {
     ]
     return (
         <View style={{}}>
-            <Text style={{ fontSize: 25 }}>Flat List</Text>
+            {/* <Text style={{ fontSize: 25 }}>Flat List</Text> */}
             <FlatList
                 data={DATA}
                 renderItem={({ item }) => (
                     <Item title={item} />
                 )}
                 keyExtractor={(item, index) => index}
+                ListHeaderComponent={<Text style={{ fontSize: 25 }}>Flat List</Text>}
             />
             {/* <Text style={{ fontSize: 25 }}>Offline Image</Text>
             <Image
