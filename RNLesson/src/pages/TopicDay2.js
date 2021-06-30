@@ -21,7 +21,7 @@ const ContohComponent = () => {
 
     return (
         <View style={{ ...styles.container, ...margin.m4, ...backgroundColor.thirdColor }}>
-            <Text style={{ fontSize: 50 }}>Contoh Compnent</Text>
+            <Text style={{ fontSize: 50 }}>Contoh Component</Text>
         </View>
     )
 }
