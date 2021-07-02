@@ -33,7 +33,7 @@ const TopicDay4 = () => {
                         </Text>
                     </View>
                     <View style={styles.title}>
-                        <Text style={{ fontSize: 25 }}>Dimensions devices Pixel 3a:</Text>
+                        <Text style={{ fontSize: 25 }}>Dimensions devices:</Text>
                         <Text style={{ fontSize: 25 }}>{width}</Text>
                         <Text style={{ fontSize: 25 }}>{height}</Text>
                     </View>
