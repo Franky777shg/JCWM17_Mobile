@@ -6,14 +6,15 @@ import {
 } from 'react-native';
 
 // import pages
-import TopicDay2 from './src/pages/TopicDay2';
-import TopicDay3 from './src/pages/TopicDay3';
-import TopicDay4 from './src/pages/TopicDay4';
+import TopicDay2 from './src/screens/TopicDay2';
+import TopicDay3 from './src/screens/TopicDay3';
+import TopicDay4 from './src/screens/TopicDay4';
+import TopicDay5 from './src/screens/TopicDay5';
 
 const App = () => {
   return (
     <View>
-      <TopicDay4 />
+      <TopicDay5 />
     </View>
   )
 };
