@@ -6,6 +6,7 @@ import {
     Button,
     FlatList
 } from 'react-native'
+import { BtnCustom } from '../components/btnCostum'
 
 const Home = ({ navigation }) => {
     const users = [
@@ -34,10 +35,11 @@ const Home = ({ navigation }) => {
                 renderItem={({ item }) => (
                     <View style={styles.contuser}>
                         <Text>{item.username}</Text>
-                        <Button
+                        {/* <Button
                             title="See Profile"
                             onPress={() => navigation.push("Profile", item)}
-                        />
+                        /> */}
+                        <BtnCustom navToProfile={() => navigation.push("Profile", item)} />
                     </View>
                 )}
                 style={{ marginTop: 20 }}
