@@ -7,8 +7,9 @@ import {
     FlatList
 } from 'react-native'
 import { BtnCustom } from '../components/btnCostum'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, route }) => {
     const users = [
         {
             username: 'Bill',
@@ -23,9 +24,12 @@ const Home = ({ navigation }) => {
             id: 3
         }
     ]
+    const data = route.params
+
     return (
         <View style={{ padding: 20 }}>
             <Text style={{ fontSize: 25 }}>Home Screens</Text>
+            <Text>Data dari Profile: {data?.previous}</Text>
             <Button
                 title="Navigate to Profile"
                 onPress={() => navigation.push("Profile", { username: 'Steve' })}
@@ -44,6 +48,7 @@ const Home = ({ navigation }) => {
                 )}
                 style={{ marginTop: 20 }}
             />
+            <Ionicons name="home" size={40} color="orange"/>
         </View>
     )
 }

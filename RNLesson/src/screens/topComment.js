@@ -1,16 +1,15 @@
 import React from 'react'
 import {
     View,
-    Text,
-    StyleSheet
+    Text
 } from 'react-native'
 
-const Comment = () => {
+const TopComment = () => {
     return (
         <View style={{backgroundColor: 'lightblue', flex: 1}}>
-            <Text style={{fontSize: 25}}>Comment Screens</Text>
+            <Text style={{fontSize: 25}}>Top Comment Screen</Text>
         </View>
     )
 }
 
-export default Comment
+export default TopComment

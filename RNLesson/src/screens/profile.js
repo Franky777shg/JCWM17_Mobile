@@ -15,7 +15,7 @@ const Profile = ({ navigation, route }) => {
             <Text style={{ fontSize: 25 }}>Username: {data.username}</Text>
             <Button
                 title="Navigate to Home"
-                onPress={() => navigation.navigate("Home")}
+                onPress={() => navigation.navigate("Home", { previous: "Dapet Nih"})}
             />
         </View>
     )
