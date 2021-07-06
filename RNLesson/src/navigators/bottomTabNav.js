@@ -19,7 +19,11 @@ const BottomTabNav = () => {
                     marginBottom: 20,
                     position: 'absolute',
                     marginHorizontal: 32
-                }
+                },
+                labelStyle: {
+                    fontSize: 15
+                },
+                labelPosition: "beside-icon"
             }}
             screenOptions={({ route }) => {
                 return {
