@@ -8,8 +8,15 @@ import {
 } from 'react-native'
 import { BtnCustom } from '../components/btnCostum'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { useSelector } from 'react-redux'
 
 const Home = ({ navigation, route }) => {
+    const { username } = useSelector((state) => {
+        return {
+            username: state.userReducer.username
+        }
+    })
+
     const users = [
         {
             username: 'Bill',
@@ -48,7 +55,7 @@ const Home = ({ navigation, route }) => {
                 )}
                 style={{ marginTop: 20 }}
             />
-            <Ionicons name="home" size={40} color="orange"/>
+            <Ionicons name="home" size={40} color="orange" />
         </View>
     )
 }
