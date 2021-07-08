@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Shoes"
+    },
+    {
+      "id": 2,
+      "name": "Bag"
+    },
+    {
+      "id": 3,
+      "name": "Pencil"
+    },
+    {
+      "id": 4,
+      "name": "Eraser"
+    },
+    {
+      "name": "Ruler",
+      "id": 5
+    }
+  ]
+}

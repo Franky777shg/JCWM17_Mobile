@@ -49,6 +49,7 @@ const Login = ({ navigation }) => {
                         password: text
                     })}
                     value={dataUSer.password}
+                    secureTextEntry
                 />
             </View>
             <Button title="Login" onPress={onLogin} />

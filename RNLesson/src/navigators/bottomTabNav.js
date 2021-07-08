@@ -40,8 +40,8 @@ const BottomTabNav = () => {
                 }
             }}
         >
-            <Tab.Screen name="Timeline" component={StackNav} />
             <Tab.Screen name="Comments" component={TopTabNav} />
+            <Tab.Screen name="Timeline" component={StackNav} />
         </Tab.Navigator>
     )
 }
