@@ -10,7 +10,7 @@
     },
     {
       "id": 3,
-      "name": "Pencil"
+      "name": "Sharpener"
     },
     {
       "id": 4,
@@ -19,6 +19,18 @@
     {
       "name": "Ruler",
       "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Eddy",
+      "password": "asd123"
+    },
+    {
+      "username": "Dragunov",
+      "password": "asd123",
+      "id": 2
     }
   ]
 }

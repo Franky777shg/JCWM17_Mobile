@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import Axios from 'axios'
 import {
     View,
     Text,
     TextInput,
     StyleSheet,
     Button,
-    TouchableOpacity
+    TouchableOpacity,
+    ToastAndroid,
+    Keyboard
 } from 'react-native'
 import { useDispatch } from 'react-redux'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -19,6 +22,19 @@ const Login = ({ navigation }) => {
     const dispatch = useDispatch()
 
     const onLogin = async () => {
+        const res = await Axios.get('http://localhost:2000/users', {
+            params: {
+                username: dataUSer.username,
+                password: dataUSer.password
+            }
+        })
+
+        if (res.data.length === 0) {
+            ToastAndroid.show("Username/Password Invalid", ToastAndroid.LONG)
+            Keyboard.dismiss()
+            return
+        }
+
         await AsyncStorage.setItem('username', dataUSer.username)
 
         dispatch({

@@ -8,7 +8,7 @@ import {
     RefreshControl,
     TextInput,
     Keyboard,
-    TouchableWithoutFeedback
+    ToastAndroid
 } from 'react-native'
 import Axios from 'axios'
 
@@ -17,6 +17,8 @@ const TopComment = () => {
     const [listProduct, setListProduct] = useState([])
     const [isRefreshing, setIsRefreshing] = useState(false)
     const [data, setData] = useState("")
+    const [idEdit, setIdEdit] = useState(null)
+    const [dataEdit, setDataEdit] = useState("")
     const URL_API = 'http://localhost:2000'
 
     const fetchData = () => {
@@ -58,11 +60,79 @@ const TopComment = () => {
 
     const onSend = () => {
         Axios.post(`${URL_API}/products`, { name: data })
-        .then(() => {
-            fetchData()
-            setData("")
-            Keyboard.dismiss()
-        })
+            .then(() => {
+                fetchData()
+                setData("")
+                Keyboard.dismiss()
+            })
+    }
+
+    const onEdit = (id) => {
+        setIdEdit(id)
+        setDataEdit("")
+    }
+
+    const onSave = (id) => {
+        console.log(dataEdit)
+        if (!dataEdit) return ToastAndroid.show("Input Still Empty", ToastAndroid.LONG)
+
+        Axios.patch(`${URL_API}/products/${id}`, { name: dataEdit })
+            .then(() => {
+                fetchData()
+                setIdEdit(null)
+                ToastAndroid.show("Edit Data Success", ToastAndroid.LONG)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const onRenderItem = ({ item }) => {
+        return (
+            <View style={styles.list}>
+                {
+                    idEdit === item.id
+                        ?
+                        <>
+                            <TextInput
+                                placeholder="Edit Here"
+                                onChangeText={text => setDataEdit(text)}
+                                style={{ width: 200 }}
+                            />
+                            <View style={{ flexDirection: 'row' }}>
+                                <TouchableOpacity
+                                    style={{ ...styles.btn, backgroundColor: 'lightgreen' }}
+                                    onPress={() => onSave(item.id)}
+                                >
+                                    <Text>Save</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={styles.btn}
+                                    onPress={() => setIdEdit(null)}
+                                >
+                                    <Text>Cancel</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </>
+                        :
+                        <>
+                            <Text>{item.name}</Text>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TouchableOpacity
+                                    style={{ ...styles.btn, backgroundColor: 'yellow' }}
+                                    onPress={() => onEdit(item.id)}
+                                >
+                                    <Text>Edit</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={styles.btn}
+                                    onPress={() => onDelete(item.id)}
+                                >
+                                    <Text>Delete</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </>
+                }
+            </View>
+        )
     }
 
     return (
@@ -84,17 +154,7 @@ const TopComment = () => {
             </View>
             <FlatList
                 data={listProduct}
-                renderItem={({ item }) => (
-                    <View style={styles.list}>
-                        <Text>{item.name}</Text>
-                        <TouchableOpacity
-                            style={styles.btn}
-                            onPress={() => onDelete(item.id)}
-                        >
-                            <Text>Delete</Text>
-                        </TouchableOpacity>
-                    </View>
-                )}
+                renderItem={onRenderItem}
                 refreshControl={
                     <RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />
                 }
@@ -120,7 +180,8 @@ const styles = StyleSheet.create({
         width: 60,
         borderRadius: 5,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginHorizontal: 5
     },
     textinput: {
         backgroundColor: '#ffffff',
